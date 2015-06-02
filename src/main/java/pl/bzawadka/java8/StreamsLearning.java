@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 public class StreamsLearning {
 
     public Integer sum(List<Integer> list) {
+        // Perform a reduction using sum function
         return list
                 .stream()
                 .reduce(Integer::sum).get();
@@ -25,6 +26,7 @@ public class StreamsLearning {
     }
 
     public List<Integer> odd(List<Integer> list) {
+        // Filter stream with a predicate
         return list
                 .stream()
                 .filter(z -> z % 2 != 0) //lambda, yeah!
