@@ -66,4 +66,21 @@ public class CollectorsLearningTest {
 
         assertThat(underTest.groupByDepartment(Arrays.asList(joe, bill, bob, fred, jack)), is(expectedGrouping));
     }
+
+    @Test
+    public void testGroupingWithSumming() {
+        Person joe = new Person("Joe", 50000, Department.HR);
+        Person bill = new Person("Bill", 50000, Department.HR);
+        Person bob = new Person("Bob", 100000, Department.IT);
+        Person fred = new Person("Fred", 100000, Department.IT);
+        Person jack = new Person("Jack", 150000, Department.SALES);
+
+        Map<Department, Integer> expectedGrouping = ImmutableMap.of(
+                Department.HR, 100000,
+                Department.IT, 200000,
+                Department.SALES, 150000
+        );
+
+        assertThat(underTest.sumSalariesInDepartment(Arrays.asList(joe, bill, bob, fred, jack)), is(expectedGrouping));
+    }
 }

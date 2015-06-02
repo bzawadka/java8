@@ -34,4 +34,10 @@ public class CollectorsLearning {
                 .stream()
                 .collect(Collectors.groupingBy(Person::getDepartment));
     }
+
+    public Map<Department, Integer> sumSalariesInDepartment(List<Person> persons) {
+        return persons
+                .stream()
+                .collect(Collectors.groupingBy(Person::getDepartment, Collectors.summingInt(Person::getSalary)));
+    }
 }
