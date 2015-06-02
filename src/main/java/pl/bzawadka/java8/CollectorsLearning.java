@@ -40,4 +40,10 @@ public class CollectorsLearning {
                 .stream()
                 .collect(Collectors.groupingBy(Person::getDepartment, Collectors.summingInt(Person::getSalary)));
     }
+
+    public Map<Boolean, List<Person>> partitionBySalaryAboveThreshold(int salaryThreshold, List<Person> persons) {
+        return persons
+                .stream()
+                .collect(Collectors.partitioningBy(p -> p.getSalary() > salaryThreshold));
+    }
 }

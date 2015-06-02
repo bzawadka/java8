@@ -83,4 +83,19 @@ public class CollectorsLearningTest {
 
         assertThat(underTest.sumSalariesInDepartment(Arrays.asList(joe, bill, bob, fred, jack)), is(expectedGrouping));
     }
+
+    @Test
+    public void testPartitioning() {
+        Person joe = new Person("Joe", 50000);
+        Person bill = new Person("Bill", 110000);
+        Person bob = new Person("Bob", 99000);
+        Person fred = new Person("Fred", 150000);
+
+        Map<Boolean, List<Person>> expectedPartitioning = ImmutableMap.of(
+                Boolean.TRUE, ImmutableList.of(bill, fred),
+                Boolean.FALSE, ImmutableList.of(joe, bob)
+        );
+
+        assertThat(underTest.partitionBySalaryAboveThreshold(100000, Arrays.asList(joe, bill, bob, fred)), is(expectedPartitioning));
+    }
 }
