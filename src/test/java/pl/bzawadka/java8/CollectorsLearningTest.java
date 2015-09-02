@@ -100,7 +100,7 @@ public class CollectorsLearningTest {
     }
 
     @Test
-    public void testFilteringRich() {
+    public void testFilteringBySalary() {
         Person joe = new Person("Joe", 50000);
         Person bill = new Person("Bill", 110000);
         Person bob = new Person("Bob", 99000);
@@ -113,7 +113,7 @@ public class CollectorsLearningTest {
     }
 
     @Test
-    public void testFilteringIt() {
+    public void testFilteringByDepartment() {
         Person joe = new Person("Joe", 50000, Department.HR);
         Person bill = new Person("Bill", 50000, Department.HR);
         Person bob = new Person("Bob", 100000, Department.IT);
