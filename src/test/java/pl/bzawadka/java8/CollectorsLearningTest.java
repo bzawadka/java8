@@ -111,4 +111,15 @@ public class CollectorsLearningTest {
 
         assertThat(underTest.filterBySalaryAboveThreshold(richnessThreshold, asList(joe, bill, bob, fred)), is(expectedRich));
     }
+
+    @Test
+    public void testFilteringIt() {
+        Person joe = new Person("Joe", 50000, Department.HR);
+        Person bill = new Person("Bill", 50000, Department.HR);
+        Person bob = new Person("Bob", 100000, Department.IT);
+
+        List<Person> expectedIt = ImmutableList.of(bob);
+
+        assertThat(underTest.filterByDepartment(Department.IT, asList(joe, bill, bob)), is(expectedIt));
+    }
 }

@@ -53,4 +53,11 @@ public class CollectorsLearning {
                 .filter(p -> p.getSalary() > salaryThreshold)
                 .collect(Collectors.toList());
     }
+
+    public List<Person> filterByDepartment(Department department, List<Person> persons) {
+        return persons
+                .stream()
+                .filter(p -> p.getDepartment().equals(department))
+                .collect(Collectors.toList());
+    }
 }
