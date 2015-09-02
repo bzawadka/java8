@@ -46,4 +46,11 @@ public class CollectorsLearning {
                 .stream()
                 .collect(Collectors.partitioningBy(p -> p.getSalary() > salaryThreshold));
     }
+
+    public List<Person> filterBySalaryAboveThreshold(int salaryThreshold, List<Person> persons) {
+        return persons
+                .stream()
+                .filter(p -> p.getSalary() > salaryThreshold)
+                .collect(Collectors.toList());
+    }
 }

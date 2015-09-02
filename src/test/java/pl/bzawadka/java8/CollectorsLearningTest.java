@@ -7,10 +7,10 @@ import org.junit.Test;
 import pl.bzawadka.java8.data.Department;
 import pl.bzawadka.java8.data.Person;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import static java.util.Arrays.asList;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -25,16 +25,16 @@ public class CollectorsLearningTest {
 
     @Test
     public void testAccumulate() {
-        List<Person> persons = Arrays.asList(
+        List<Person> persons = asList(
                 new Person("Joe"),
                 new Person("Bill"),
                 new Person("Bob"));
-        assertThat(underTest.accumulateNames(persons), is(Arrays.asList("Joe", "Bill", "Bob")));
+        assertThat(underTest.accumulateNames(persons), is(asList("Joe", "Bill", "Bob")));
     }
 
     @Test
     public void testJoining() {
-        List<Person> persons = Arrays.asList(
+        List<Person> persons = asList(
                 new Person("Joe"),
                 new Person("Bill"),
                 new Person("Bob"));
@@ -43,7 +43,7 @@ public class CollectorsLearningTest {
 
     @Test
     public void testSumming() {
-        List<Person> persons = Arrays.asList(
+        List<Person> persons = asList(
                 new Person("Joe", 50000),
                 new Person("Bill", 100000),
                 new Person("Bob", 150000));
@@ -64,7 +64,7 @@ public class CollectorsLearningTest {
                 Department.SALES, ImmutableList.of(jack)
         );
 
-        assertThat(underTest.groupByDepartment(Arrays.asList(joe, bill, bob, fred, jack)), is(expectedGrouping));
+        assertThat(underTest.groupByDepartment(asList(joe, bill, bob, fred, jack)), is(expectedGrouping));
     }
 
     @Test
@@ -81,7 +81,7 @@ public class CollectorsLearningTest {
                 Department.SALES, 150000
         );
 
-        assertThat(underTest.sumSalariesInDepartment(Arrays.asList(joe, bill, bob, fred, jack)), is(expectedGrouping));
+        assertThat(underTest.sumSalariesInDepartment(asList(joe, bill, bob, fred, jack)), is(expectedGrouping));
     }
 
     @Test
@@ -96,6 +96,19 @@ public class CollectorsLearningTest {
                 Boolean.FALSE, ImmutableList.of(joe, bob)
         );
 
-        assertThat(underTest.partitionBySalaryAboveThreshold(100000, Arrays.asList(joe, bill, bob, fred)), is(expectedPartitioning));
+        assertThat(underTest.partitionBySalaryAboveThreshold(100000, asList(joe, bill, bob, fred)), is(expectedPartitioning));
+    }
+
+    @Test
+    public void testFilteringRich() {
+        Person joe = new Person("Joe", 50000);
+        Person bill = new Person("Bill", 110000);
+        Person bob = new Person("Bob", 99000);
+        Person fred = new Person("Fred", 150000);
+
+        int richnessThreshold = 100000;
+        List<Person> expectedRich = ImmutableList.of(bill, fred);
+
+        assertThat(underTest.filterBySalaryAboveThreshold(richnessThreshold, asList(joe, bill, bob, fred)), is(expectedRich));
     }
 }

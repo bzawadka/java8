@@ -9,15 +9,11 @@ public class Person {
     private final Department department;
 
     public Person(String name) {
-        this.name = name;
-        this.salary = DEFAULT_SALARY;
-        this.department = DEFAULT_DEPARTMENT;
+        this(name, DEFAULT_SALARY, DEFAULT_DEPARTMENT);
     }
 
     public Person(String name, Integer salary) {
-        this.name = name;
-        this.salary = salary;
-        this.department = DEFAULT_DEPARTMENT;
+        this(name, salary, DEFAULT_DEPARTMENT);
     }
 
     public Person(String name, Integer salary, Department department) {
