@@ -17,6 +17,10 @@ public class Person {
         this(name, salary, DEFAULT_DEPARTMENT);
     }
 
+    public Person(String name, Department department) {
+        this(name, DEFAULT_SALARY, department);
+    }
+
     public Person(String name, Integer salary, Department department) {
         this.name = name;
         this.salary = salary;

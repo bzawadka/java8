@@ -20,8 +20,8 @@ public class ConsumerLearningTest {
     public void setUp() {
         underTest = new ConsumerLearning();
         persons = asList(
-                new Person("Joe", 100000, Department.HR),
-                new Person("Bill", 100000, Department.SALES));
+                new Person("Joe", Department.HR),
+                new Person("Bill", Department.SALES));
     }
 
     @Test

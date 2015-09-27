@@ -5,6 +5,7 @@ import pl.bzawadka.java8.data.Person;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class CollectorsLearning {
@@ -59,5 +60,12 @@ public class CollectorsLearning {
                 .stream()
                 .filter(p -> p.getDepartment().equals(department))
                 .collect(Collectors.toList());
+    }
+
+    public void fireAllInDepartment(List<Person> persons, Department department) {
+        Objects.requireNonNull(department);
+        persons.stream()
+                .filter(p -> p.getDepartment().equals(department))
+                .forEach(Person::fire);
     }
 }

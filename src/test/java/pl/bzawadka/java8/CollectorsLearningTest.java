@@ -122,4 +122,18 @@ public class CollectorsLearningTest {
 
         assertThat(underTest.filterByDepartment(Department.IT, asList(joe, bill, bob)), is(expectedIt));
     }
+
+    @Test
+    public void testFiringAllInDepartment() {
+        Person joe = new Person("Joe", Department.HR);
+        Person bill = new Person("Bill", Department.HR);
+        Person bob = new Person("Bob", Department.IT);
+        List<Person> persons = asList(joe, bill, bob);
+
+        underTest.fireAllInDepartment(persons, Department.HR);
+
+        assertThat(joe.isEmployed(), is(false));
+        assertThat(bill.isEmployed(), is(false));
+        assertThat(bob.isEmployed(), is(true));
+    }
 }
