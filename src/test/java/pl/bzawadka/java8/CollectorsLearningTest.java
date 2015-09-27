@@ -136,4 +136,16 @@ public class CollectorsLearningTest {
         assertThat(bill.isEmployed(), is(false));
         assertThat(bob.isEmployed(), is(true));
     }
+
+    @Test
+    public void testCalculatingAverageSalary() {
+        List<Person> persons = asList(
+                new Person("Joe", 50000, Department.IT),
+                new Person("Bill", 100000, Department.IT),
+                new Person("Bob", 150000, Department.SALES));
+
+        double averageItSalary = underTest.calculateAverageSalaryInDepartment(Department.IT, persons);
+
+        assertThat(averageItSalary, is(75000d));
+    }
 }

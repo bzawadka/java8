@@ -55,6 +55,15 @@ public class CollectorsLearning {
                 .collect(Collectors.toList());
     }
 
+    public double calculateAverageSalaryInDepartment(Department department, List<Person> persons) {
+        return persons
+                .stream()
+                .filter(p -> p.getDepartment().equals(department))
+                .mapToInt(Person::getSalary)
+                .average()
+                .getAsDouble();
+    }
+
     public List<Person> filterByDepartment(Department department, List<Person> persons) {
         return persons
                 .stream()
@@ -62,10 +71,12 @@ public class CollectorsLearning {
                 .collect(Collectors.toList());
     }
 
+    // Pipeline example
     public void fireAllInDepartment(List<Person> persons, Department department) {
         Objects.requireNonNull(department);
-        persons.stream()
-                .filter(p -> p.getDepartment().equals(department))
-                .forEach(Person::fire);
+        // A pipeline contains the following components:
+        persons.stream()                                            // 1. source
+                .filter(p -> p.getDepartment().equals(department))  // 2. intermediate operation(s) - produces new stream
+                .forEach(Person::fire);                             // 3. terminal operation - produces a non-stream result
     }
 }
