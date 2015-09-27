@@ -6,7 +6,7 @@ public class Person {
 
     private final String name;
     private final Integer salary;
-    private final Department department;
+    private Department department;
 
     public Person(String name) {
         this(name, DEFAULT_SALARY, DEFAULT_DEPARTMENT);
@@ -32,6 +32,10 @@ public class Person {
 
     public Department getDepartment() {
         return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     @Override
