@@ -10,7 +10,7 @@ public class StreamsLearning {
         // Perform a reduction using sum function
         return list
                 .stream()
-                .reduce(Integer::sum).get();
+                .reduce(Integer::sum).get(); // Method reference provide easy-to-read lambda expressions for methods that already have a name
     }
 
     public Integer max(List<Integer> list) {

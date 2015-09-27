@@ -12,7 +12,7 @@ public class CollectorsLearning {
     public List<String> accumulateNames(List<Person> persons) {
         return persons
                 .stream()
-                .map(Person::getName)
+                .map(Person::getName) // Method reference provide easy-to-read lambda expressions for methods that already have a name
                 .collect(Collectors.toList());
     }
 

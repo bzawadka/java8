@@ -7,6 +7,7 @@ public class Person {
     private final String name;
     private final Integer salary;
     private Department department;
+    private boolean isEmployed;
 
     public Person(String name) {
         this(name, DEFAULT_SALARY, DEFAULT_DEPARTMENT);
@@ -20,6 +21,7 @@ public class Person {
         this.name = name;
         this.salary = salary;
         this.department = department;
+        this.isEmployed = true;
     }
 
     public String getName() {
@@ -34,8 +36,16 @@ public class Person {
         return department;
     }
 
+    public boolean isEmployed() {
+        return isEmployed;
+    }
+
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    public void fire() {
+        this.isEmployed = false;
     }
 
     @Override

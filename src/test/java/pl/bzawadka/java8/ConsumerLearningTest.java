@@ -14,20 +14,19 @@ import static org.junit.Assert.assertThat;
 public class ConsumerLearningTest {
 
     private ConsumerLearning underTest;
+    private List<Person> persons;
 
     @Before
     public void setUp() {
         underTest = new ConsumerLearning();
+        persons = asList(
+                new Person("Joe", 100000, Department.HR),
+                new Person("Bill", 100000, Department.SALES));
     }
 
     @Test
     public void testSetDepartmentWithLambdaWorks() {
-        List<Person> persons = asList(
-                new Person("Joe", 100000, Department.HR),
-                new Person("Bill", 100000, Department.SALES));
-
         underTest.setDepartmentWithLambda(persons, Department.IT);
-
         for (Person p : persons) {
             assertThat(p.getDepartment(), is(Department.IT));
         }
@@ -35,14 +34,16 @@ public class ConsumerLearningTest {
 
     @Test
     public void testSetDepartmentWithExplicitConsumerWorks() {
-        List<Person> persons = asList(
-                new Person("Joe", 100000, Department.HR),
-                new Person("Bill", 100000, Department.SALES));
-
         underTest.setDepartmentWithExplicitConsumer(persons, Department.IT);
-
         for (Person p : persons) {
             assertThat(p.getDepartment(), is(Department.IT));
         }
+    }
+
+    @Test
+    public void testFireWorks() {
+        persons.forEach(p -> assertThat(p.isEmployed(), is(true)));
+        underTest.fireAll(persons);
+        persons.forEach(p -> assertThat(p.isEmployed(), is(false)));
     }
 }

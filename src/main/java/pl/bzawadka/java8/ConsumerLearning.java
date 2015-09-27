@@ -20,4 +20,8 @@ public class ConsumerLearning {
             }
         });
     }
+
+    public void fireAll(List<Person> persons) {
+        persons.forEach(Person::fire); // Method reference provide easy-to-read lambda expressions for methods that already have a name
+    }
 }
