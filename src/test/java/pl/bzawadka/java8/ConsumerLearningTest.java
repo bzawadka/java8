@@ -11,13 +11,13 @@ import static java.util.Arrays.asList;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-public class DefaultMethodsTest {
+public class ConsumerLearningTest {
 
-    private DefaultMethods underTest;
+    private ConsumerLearning underTest;
 
     @Before
     public void setUp() {
-        underTest = new DefaultMethods();
+        underTest = new ConsumerLearning();
     }
 
     @Test

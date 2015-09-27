@@ -6,7 +6,7 @@ import pl.bzawadka.java8.data.Person;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class DefaultMethods {
+public class ConsumerLearning {
 
     public void setDepartmentWithLambda(List<Person> persons, final Department department) {
         persons.forEach(e -> e.setDepartment(department));
