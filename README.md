@@ -4,7 +4,7 @@ Learning Java 8
 ### Java Programming Language
 - Lambda Expressions
 - Method references
-- Default methods
+- Default methods (Defender Methods, Virtual extension methods)
 
 ### Collections
 - Stream API (java.util.stream)
