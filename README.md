@@ -9,6 +9,10 @@ Learning Java 8
 ### Collections
 - Stream API (java.util.stream)
 
+### Functional Interface
+- Consumer
+- Predicate
+
 going through:
 http://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html
 http://docs.oracle.com/javase/tutorial/collections/streams/#pipelines
