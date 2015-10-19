@@ -27,13 +27,13 @@ public class CollectorsLearning {
     public Integer sumSalaries(List<Person> persons) {
         return persons
                 .stream()
-                .collect(Collectors.summingInt(Person::getSalary));
+                .collect(Collectors.summingInt(Person::getSalary)); // ToIntFunction
     }
 
     public Map<Department, List<Person>> groupByDepartment(List<Person> persons) {
         return persons
                 .stream()
-                .collect(Collectors.groupingBy(Person::getDepartment));
+                .collect(Collectors.groupingBy(Person::getDepartment)); // Function
     }
 
     public Map<Department, Integer> sumSalariesInDepartment(List<Person> persons) {
@@ -45,13 +45,13 @@ public class CollectorsLearning {
     public Map<Boolean, List<Person>> partitionBySalaryAboveThreshold(int salaryThreshold, List<Person> persons) {
         return persons
                 .stream()
-                .collect(Collectors.partitioningBy(p -> p.getSalary() > salaryThreshold));
+                .collect(Collectors.partitioningBy(p -> p.getSalary() > salaryThreshold)); // Predicate
     }
 
     public List<Person> filterBySalaryAboveThreshold(int salaryThreshold, List<Person> persons) {
         return persons
                 .stream()
-                .filter(p -> p.getSalary() > salaryThreshold)
+                .filter(p -> p.getSalary() > salaryThreshold) // Predicate
                 .collect(Collectors.toList());
     }
 
