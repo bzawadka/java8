@@ -4,10 +4,7 @@ import org.junit.Test;
 import pl.bzawadka.java8.data.Department;
 import pl.bzawadka.java8.data.Person;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Function;
 
 import static org.hamcrest.Matchers.is;
@@ -38,6 +35,13 @@ public class FunctionLearningTest {
 
         assertThat(map.get("foo"), is("FRESH"));
         assertThat(map.get("bar"), is("BAR STALE"));
+    }
+
+    @Test
+    public void testFunctionInOptionalWorks() {
+        Optional<Person> person = Optional.of(new Person("bob", Department.IT));
+        Optional<Department> department = person.map(p -> p.getDepartment());
+        assertThat(department.get(), is(Department.IT));
     }
 
 }

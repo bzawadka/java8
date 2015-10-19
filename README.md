@@ -13,7 +13,7 @@ Learning Java 8
 - Consumer
 - Predicate
 - Supplier
-- Function
+- Function, BiFunction
 
 going through:
 http://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html
