@@ -12,7 +12,6 @@ public class FromLoopToLambda {
 
     public static void main(String[] args) {
         FromLoopToLambda foo = new FromLoopToLambda();
-        foo.setup();
 
         System.out.println(foo.forMinInteger() + " for loop");
         System.out.println(foo.forEachMinInteger() + " for-each loop");
@@ -20,6 +19,10 @@ public class FromLoopToLambda {
         System.out.println(foo.parallelStreamMinInteger() + " parallelStream");
         System.out.println(foo.lambdaMinInteger() + " lambda");
         System.out.println(foo.forEachLambdaMinInteger() + " forEach lambda");
+    }
+
+    public FromLoopToLambda() {
+        setup();
     }
 
     public void setup() {
@@ -35,7 +38,7 @@ public class FromLoopToLambda {
         return dataSet;
     }
 
-    private int forMinInteger() {
+    public int forMinInteger() {
         int min = Integer.MAX_VALUE;
         for (int i = 0; i < dataSet.size(); i++) {
             min = Integer.min(min, dataSet.get(i));
@@ -43,7 +46,7 @@ public class FromLoopToLambda {
         return min;
     }
 
-    private int forEachMinInteger() {
+    public int forEachMinInteger() {
         int min = Integer.MAX_VALUE;
         for (Integer i : dataSet) {
             min = Integer.min(min, i);
@@ -51,7 +54,7 @@ public class FromLoopToLambda {
         return min;
     }
 
-    private int iteratorMinInteger() {
+    public int iteratorMinInteger() {
         int min = Integer.MAX_VALUE;
         Iterator<Integer> iterator = dataSet.iterator();
         while (iterator.hasNext()) {
@@ -60,18 +63,18 @@ public class FromLoopToLambda {
         return min;
     }
 
-    private int parallelStreamMinInteger() {
+    public int parallelStreamMinInteger() {
         return dataSet.parallelStream().reduce(Integer::min).get();
     }
 
-    private int lambdaMinInteger() {
+    public int lambdaMinInteger() {
         return dataSet.stream().reduce(Integer.MAX_VALUE, (a, b) -> Integer.min(a, b));
     }
 
     /**
      * be careful with forEach: http://stackoverflow.com/questions/16635398/java-8-iterable-foreach-vs-foreach-loop/20177092#20177092
      */
-    private int forEachLambdaMinInteger() {
+    public int forEachLambdaMinInteger() {
         final Wrapper minWrapper = new Wrapper();
         minWrapper.value = Integer.MAX_VALUE;
         dataSet.forEach(i -> minHelper(i, minWrapper));
