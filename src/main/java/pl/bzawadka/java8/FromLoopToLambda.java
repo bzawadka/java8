@@ -10,22 +10,7 @@ public class FromLoopToLambda {
     private static final int TEST_DATA_BOUND = 10000;
     private List<Integer> dataSet;
 
-    public static void main(String[] args) {
-        FromLoopToLambda foo = new FromLoopToLambda();
-
-        System.out.println(foo.forMinInteger() + " for loop");
-        System.out.println(foo.forEachMinInteger() + " for-each loop");
-        System.out.println(foo.iteratorMinInteger() + " iterator");
-        System.out.println(foo.parallelStreamMinInteger() + " parallelStream");
-        System.out.println(foo.lambdaMinInteger() + " lambda");
-        System.out.println(foo.forEachLambdaMinInteger() + " forEach lambda");
-    }
-
     public FromLoopToLambda() {
-        setup();
-    }
-
-    public void setup() {
         dataSet = new ArrayList<>(TEST_DATA_SET_SIZE);
         populateDataSet(dataSet);
     }
@@ -67,6 +52,10 @@ public class FromLoopToLambda {
         return dataSet.parallelStream().reduce(Integer::min).get();
     }
 
+    public int streamMinInteger() {
+        return dataSet.stream().reduce(Integer::min).get();
+    }
+
     public int lambdaMinInteger() {
         return dataSet.stream().reduce(Integer.MAX_VALUE, (a, b) -> Integer.min(a, b));
     }
@@ -85,13 +74,8 @@ public class FromLoopToLambda {
         b.value = Integer.min(a, b.value);
         return b.value;
     }
-
     public static class Wrapper {
         public Integer value;
-    }
 
-    private int streamMinInteger() {
-        int min = Integer.MAX_VALUE;
-        return min;
     }
 }
