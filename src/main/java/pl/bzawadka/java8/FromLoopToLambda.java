@@ -74,8 +74,8 @@ public class FromLoopToLambda {
         b.value = Integer.min(a, b.value);
         return b.value;
     }
+
     public static class Wrapper {
         public Integer value;
-
     }
 }
