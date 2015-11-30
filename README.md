@@ -19,6 +19,7 @@ Learning Java 8
 - Function, BiFunction
 
 going through:
+http://www.techempower.com/blog/2013/03/26/everything-about-java-8/
 http://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html
 http://docs.oracle.com/javase/tutorial/collections/streams/#pipelines
 http://docs.oracle.com/javase/8/docs/technotes/guides/language/lambda_api_jdk8.html
