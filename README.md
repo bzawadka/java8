@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/bzawadka/java8.png?branch=master)](https://travis-ci.org/bzawadka/java8)
+[![Coverage Status](https://coveralls.io/repos/bzawadka/java8/badge.svg?branch=master&service=github)](https://coveralls.io/github/bzawadka/java8?branch=master)
+
 # java8
 Learning Java 8
 
