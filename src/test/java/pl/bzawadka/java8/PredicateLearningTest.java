@@ -6,6 +6,7 @@ import pl.bzawadka.java8.data.Department;
 import pl.bzawadka.java8.data.Person;
 
 import java.util.ArrayList;
+import java.util.function.Predicate;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
@@ -45,4 +46,17 @@ public class PredicateLearningTest {
         assertThat(persons.size(), is(2));
         assertThat(persons, hasItem(new Person("Joe", 50000, Department.IT)));
     }
+
+    @Test
+    public void testBuiltInPredicates() {
+        Predicate<String> isEmptyString = String::isEmpty;
+        assertThat(isEmptyString.test(""), equalTo(true));
+        assertThat(isEmptyString.test("bazinga"), equalTo(false));
+
+        int longThreshold = 10;
+        Predicate<String> isLongString = src -> src.length() > longThreshold;
+        assertThat(isLongString.test("short"), equalTo(false));
+        assertThat(isLongString.test("I am very, very long"), equalTo(true));
+    }
+
 }
