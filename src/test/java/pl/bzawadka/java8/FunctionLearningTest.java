@@ -5,43 +5,60 @@ import pl.bzawadka.java8.data.Department;
 import pl.bzawadka.java8.data.Person;
 
 import java.util.*;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 public class FunctionLearningTest {
 
+    //accept one argument and produce a result
     @Test
-    public void testFunctionInHashMapWorks() {
-        Function<Department, Set<Person>> noPersonsForDepartment = d -> new HashSet<>();
-
+    public void testComputeIfAbsentFunctionInMap() {
         Map<Department, Set<Person>> personsByDepartments = new HashMap<>();
         assertThat(personsByDepartments.size(), is(0));
 
-        personsByDepartments.computeIfAbsent(Department.HR, noPersonsForDepartment);
+        Function<Department, Set<Person>> emptyDepartmentInitFunction = d -> new HashSet<>();
+        personsByDepartments.computeIfAbsent(Department.HR, emptyDepartmentInitFunction);
+
         assertThat(personsByDepartments.size(), is(1));
         assertThat(personsByDepartments.get(Department.HR).isEmpty(), is(true));
     }
 
+    //accept two arguments and produce a result
     @Test
-    public void testBiFunctionInHashMapWorks() {
-        Map<String, String> map = new HashMap<>();
-        map.put("foo", null);
-        map.put("bar", "BAR");
+    public void testComputeRemappingBiFunctionInMap() {
+        Map<String, String> fruitWithFreshness = new HashMap<>();
+        fruitWithFreshness.put("orange", "yes");
+        fruitWithFreshness.put("apple", "no");
 
-        map.compute("foo", (k, v) -> v == null ? "FRESH" : v.concat(" STALE")); // BiFunction<String, String, String>
-        map.compute("bar", (k, v) -> v == null ? "FRESH" : v.concat(" STALE"));
+        BiFunction<String, String, String> freshnessRemappingFunction =
+                (fruit, freshness) -> freshness.equals("yes") ? "FRESH ".concat(fruit) : "ROTTEN ".concat(fruit);
+        fruitWithFreshness.compute("orange", freshnessRemappingFunction);
+        fruitWithFreshness.compute("apple", freshnessRemappingFunction);
 
-        assertThat(map.get("foo"), is("FRESH"));
-        assertThat(map.get("bar"), is("BAR STALE"));
+        assertThat(fruitWithFreshness.get("orange"), is("FRESH orange"));
+        assertThat(fruitWithFreshness.get("apple"), is("ROTTEN apple"));
     }
 
     @Test
-    public void testFunctionInOptionalWorks() {
+    public void testMapFunctionInOptional() {
         Optional<Person> person = Optional.of(new Person("bob", Department.IT));
-        Optional<Department> department = person.map(p -> p.getDepartment());
-        assertThat(department.get(), is(Department.IT));
+        Optional<Department> departmentMapping = person.map(p -> p.getDepartment());
+        assertThat(departmentMapping.get(), is(Department.IT));
+    }
+
+    @Test
+    public void testSimpleFunction() {
+        Function<String, String> toUpperCase = String::toUpperCase;
+        Function<String, String> toLowerCase = String::toLowerCase;
+        Function<String, String> replaceZ = s -> s.replaceFirst("z", "x");
+
+        assertThat(toUpperCase.apply("abz"), equalTo("ABZ"));
+        assertThat(toUpperCase.andThen(toLowerCase).apply("abz"), equalTo("abz"));
+        assertThat(replaceZ.apply("abz"), equalTo("abx"));
     }
 
 }

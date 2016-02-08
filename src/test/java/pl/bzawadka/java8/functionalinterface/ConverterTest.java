@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 public class ConverterTest {
 
     @Test
-    public void testConvert() throws Exception {
+    public void testCustomFunctionalInterface() throws Exception {
         Converter<String, Integer> integerConverter = (from) -> Integer.valueOf(from);
         assertThat(integerConverter.convert("123"), equalTo(123));
 
