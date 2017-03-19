@@ -9,16 +9,16 @@ import static org.junit.Assert.*;
 public class FromLoopToLambdaTest {
 
     @Test
-    public void testThemAll() {
-        FromLoopToLambda runner = new FromLoopToLambda();
+    public void minIntegerIsCalculatedCorrectlyInSevenDifferentWays() {
+        FromLoopToLambda underTest = new FromLoopToLambda();
 
-        int val1 = runner.forMinInteger();
-        int val2 = runner.forEachMinInteger();
-        int val3 = runner.iteratorMinInteger();
-        int val4 = runner.parallelStreamMinInteger();
-        int val5 = runner.streamMinInteger();
-        int val6 = runner.lambdaMinInteger();
-        int val7 = runner.forEachLambdaMinInteger();
+        int val1 = underTest.forMinInteger();
+        int val2 = underTest.forEachMinInteger();
+        int val3 = underTest.iteratorMinInteger();
+        int val4 = underTest.parallelStreamMinInteger();
+        int val5 = underTest.streamMinInteger();
+        int val6 = underTest.lambdaMinInteger();
+        int val7 = underTest.forEachLambdaMinInteger();
 
         System.out.println(val1 + " for loop");
         System.out.println(val2 + " for-each loop");

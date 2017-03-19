@@ -1,16 +1,30 @@
 package pl.bzawadka.java8;
 
 import java.util.List;
+import java.util.function.BinaryOperator;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class StreamsLearning {
+
+    public Integer sumManually(List<Integer> list) {
+        return list
+                .stream()
+                .reduce((x,y) -> x + y).get();
+    }
 
     public Integer sum(List<Integer> list) {
         // Perform a reduction using sum function
         return list
                 .stream()
                 .reduce(Integer::sum).get(); // Method reference provide easy-to-read lambda expressions for methods that already have a name
+    }
+
+    public Integer maxManually(List<Integer> list) {
+        BinaryOperator<Integer> maxOperator = (Integer x, Integer y) -> x > y ? x : y;
+        return list
+                .stream()
+                .reduce(maxOperator).get();
     }
 
     public Integer max(List<Integer> list) {

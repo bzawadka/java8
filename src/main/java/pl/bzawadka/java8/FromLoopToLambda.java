@@ -3,6 +3,7 @@ package pl.bzawadka.java8;
 import java.util.*;
 
 /**
+ * from for loop to lambda
  * inspired by http://blog.takipi.com/benchmark-how-java-8-lambdas-and-streams-can-make-your-code-5-times-slower/
  */
 public class FromLoopToLambda {

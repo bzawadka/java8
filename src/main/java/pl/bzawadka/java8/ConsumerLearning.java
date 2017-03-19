@@ -9,7 +9,7 @@ import java.util.function.Consumer;
 public class ConsumerLearning {
 
     public void setDepartmentWithLambda(List<Person> persons, final Department department) {
-        persons.forEach(e -> e.setDepartment(department));
+        persons.forEach(person -> person.setDepartment(department));
     }
 
     public void setDepartmentWithExplicitConsumer(List<Person> persons, final Department department) {

@@ -18,8 +18,18 @@ public class StreamsLearningTest {
     }
 
     @Test
+    public void testSumManually() {
+        assertThat(underTest.sumManually(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8)), is(36));
+    }
+
+    @Test
     public void testSum() {
         assertThat(underTest.sum(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8)), is(36));
+    }
+
+    @Test
+    public void testMaxManually() {
+        assertThat(underTest.maxManually(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8)), is(8));
     }
 
     @Test
